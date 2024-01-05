@@ -1,0 +1,60 @@
+@baseUrl = http://localhost:3000
+
+### Try to login an unknow user KO
+POST {{baseUrl}}/auths/login
+Content-Type: application/json
+
+{
+    "username":"unknown",
+    "password":"admin"
+}
+
+
+### Login the default admin OK
+POST {{baseUrl}}/auths/login
+Content-Type: application/json
+
+{
+    "username":"admin",
+    "password":"admin"
+}
+
+
+### Create the manager user OK
+POST {{baseUrl}}/auths/register
+Content-Type: application/json
+
+{
+    "login":"azerty",
+    "email":"azerty.abc@student.vinci.be",
+    "password":"azerty"
+}
+
+### Create an already existing user KO
+POST {{baseUrl}}/auths/register
+Content-Type: application/json
+
+{
+    "login":"azerty",
+    "email":"azerty.abc@student.vinci.be",
+    "password":"azerty"
+}
+
+### Get id from username OK
+POST {{baseUrl}}/auths/readUserFromUsername
+Content-Type: application/json
+
+{
+    "username": "admin"
+
+}
+
+
+### Compare a password OK
+POST {{baseUrl}}/auths/comparePassword
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "admin"
+}
